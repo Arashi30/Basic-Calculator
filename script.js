@@ -1,6 +1,9 @@
 let currentOperand = '';
 let previousOperand = '';
 let operation = null;
+let audioIndex = 0;
+
+const audioFiles = ['audio_tacwm.mp3', 'audio_full.mp3'];
 
 function appendNumber(number) {
     if (currentOperand === 'Hi, crush!') return;
@@ -47,7 +50,13 @@ function calculateResult() {
     updateDisplay();
 
     const audio = document.getElementById('audio');
+    audio.src = audioFiles[audioIndex];
     audio.play();
+    audio.addEventListener('ended', function() {
+        audioIndex = (audioIndex + 1) % audioFiles.length;
+        audio.src = audioFiles[audioIndex];
+        audio.play();
+    });
 }
 
 function clearResult() {
