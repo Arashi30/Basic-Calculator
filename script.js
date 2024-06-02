@@ -3,16 +3,18 @@ let previousOperand = '';
 let operation = null;
 
 function appendNumber(number) {
+    if (currentOperand === 'Hi, crush!') return;
     currentOperand += number;
     updateDisplay();
 }
 
 function chooseOperation(op) {
+    if (currentOperand === 'Hi, crush!') return;
     if (currentOperand === '') return;
     if (previousOperand !== '') {
         calculateResult();
     }
-    operation = op;
+    operation = op; 
     previousOperand = currentOperand;
     currentOperand = '';
 }
