@@ -60,6 +60,7 @@ function calculateResult() {
 }
 
 function clearResult() {
+    if (currentOperand === 'Hi, crush!') return;
     currentOperand = '';
     previousOperand = '';
     operation = null;
